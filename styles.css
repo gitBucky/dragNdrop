@@ -1,0 +1,320 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+#backgroundVideo {
+    position: fixed; /* Fixed position */
+    pointer-events: none; /* Ignore mouse events */
+    top: 0;
+    left: 0;
+    width: 300px; /* Adjust as needed */
+    height: auto;
+    z-index: -1; /* To ensure it stays in the background */
+}
+
+canvas {
+    border: 1px solid white;
+    max-width: 100%;
+    height: auto;
+}
+
+#stickers img {
+    width: 100px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+
+#buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding: 10px;
+    width: 80vw; /* Same width as canvasContainer */
+    margin: 0 auto 20px; /* Align with canvasContainer and add space below */
+}
+
+
+
+
+#addStickerBtn, #saveBtn, #resetBtn, #deleteBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey; /* Retro grey background */
+    border: 2px outset #c0c0c0; /* Retro 3D border effect */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Tahoma', 'Arial', sans-serif; /* Retro font style */
+    color: white; /* Text color */
+    margin-left: 10px; /* Space between buttons */
+    height: 40px; /* Consistent height */
+}
+
+#deleteBtn {
+    display: none; /* Initially hidden */
+    /* Other styles remain the same */
+}
+
+
+#addStickerBtn:hover, #saveBtn:hover, #resetBtn:hover {
+    border-style: inset; /* Change on hover for a retro pressed-in effect */
+}
+
+#canvasContainer {
+    width: 80vw;
+    height: 80vh;
+    position: relative;
+    margin: 0 auto; /* Center alignment */
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+
+#addStickerBtn, #deleteBtn {
+    position: relative; /* Change position to relative */
+}
+
+#imageCanvas {
+    width: 100%; /* Canvas width fills the container */
+    height: auto; /* Adjust height automatically to maintain aspect ratio */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+
+#uploadIcon {
+    position: absolute;
+    bottom: 10px;    /* Adjust as needed */
+    right: 10px;   /* Adjust as needed */
+    cursor: pointer;
+}
+
+#uploadIcon img {
+    width: 50px;  /* Adjust size as needed */
+}
+
+/* Pop-up Modal Styles */
+
+.modal-titlebar {
+    background-color: #000080; /* Classic Windows blue */
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-titlebar .close {
+    float: right;
+    color: white;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-height: 70%; /* Limit height */
+    overflow-y: auto; /* Enable vertical scroll */
+    background-color: #c0c0c0; /* Classic Windows grey background */
+    border: 2px outset #000; /* 3D effect border */
+    box-shadow: 4px 4px 2px #000; /* Adds depth with shadow */
+    font-family: 'MS Sans Serif', 'Arial', sans-serif; /* Classic Windows font */
+    color: black; /* Typical text color */
+}
+
+.modal-content button {
+    background-color: grey;
+    border: 2px outset #c0c0c0;
+    color: white;
+}
+
+.close {
+    display: inline-block;
+    width: 20px; /* Mimic the size of classic Windows close buttons */
+    text-align: center;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #c0c0c0; /* Light grey on hover */
+    background-color: red; /* Red background on hover */
+    text-decoration: none;
+}
+
+/* Sticker Container Styles */
+#stickerContainer {
+    display: grid;
+    padding: 10px; /* Add some padding inside the container */
+
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.sticker {
+    border: 1px solid #000; /* Simple solid border */
+    background-color: black;
+    max-width: 100%; /* Scale down images */
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+#addStickerBtn .stickerIcon {
+    background-color: black;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#addStickerBtn .stickerIcon img {
+    width: 20px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Optional: Change appearance when hovering over the button */
+#addStickerBtn:hover {
+    border-style: inset;
+}
+
+#deleteBtn {
+
+
+  
+
+        display: none; /* Initially hidden */
+        position: relative; /* Relative to the container */
+        margin-left: 10px; /* Space between this and the reset button */
+
+    background-color: grey; /* Retro color */
+    color: white;
+    border: 2px outset #c0c0c0; /* Retro 3D border */
+    border-radius: 5px; /* Slightly rounded corners for a retro feel */
+    width: 40px; /* Square shape */
+    height: 40px;
+    font-family: 'Tahoma', 'Arial', sans-serif; /* Retro font style */
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 40px; /* Center the 'X' vertically */
+    text-align: center;
+
+
+ 
+        position: absolute;
+        top: 10px; /* Adjust as needed */
+        right: 10px; /* Positioned on the far right */
+}
+
+#deleteBtn:hover {
+    border-style: inset; /* Change on hover for retro effect */
+}
+
+.modal-content button {
+    background-color: #c0c0c0; /* Classic button color */
+    border: 1px outset #fff; /* 3D effect */
+    color: black;
+}
+
+#saveBtn {
+    display: inline-flex;
+    align-items: center;
+    background-color: grey; /* Retro grey background */
+    border: 2px outset #c0c0c0; /* Retro 3D border effect */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Tahoma', 'Arial', sans-serif; /* Retro font style */
+    color: white; /* Text color */
+}
+
+
+#saveBtn:hover, #resetBtn:hover {
+    border-style: inset;
+}
+
+#saveBtn:hover {
+    border-style: inset; /* Change on hover for a retro pressed-in effect */
+}
+
+#resetBtn {
+    display: inline-flex;
+    align-items: center;
+    background-color: grey; /* Retro grey background */
+    border: 2px outset #c0c0c0; /* Retro 3D border effect */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Tahoma', 'Arial', sans-serif; /* Retro font style */
+    color: white; /* Text color */
+    margin-left: 10px; /* Space between buttons */
+}
+
+#resetBtn:hover {
+    border-style: inset; /* Change on hover for a retro pressed-in effect */
+}
+
+/* General Button Styles */
+#addStickerBtn, #deleteBtn, #saveBtn, #resetBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+    border: 2px outset #c0c0c0;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Tahoma', 'Arial', sans-serif;
+    color: white;
+    margin-left: 10px;
+    height: 40px;
+    line-height: 1; /* Ensures text is centered vertically */
+    font-size: 16px; /* Standardize font size */
+    box-sizing: border-box; /* Include padding and border in the height calculation */
+}
+
+#addStickerBtn:hover, #deleteBtn:hover, #saveBtn:hover, #resetBtn:hover {
+    border-style: inset;
+}
+
+/* Add Sticker Button Specific Styles */
+#addStickerBtn .stickerIcon {
+    background-color: black;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#addStickerBtn .stickerIcon img {
+    width: 20px;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    #canvasContainer {
+        width: 90vw; /* Increase width on smaller screens */
+        /* Adjust other styles as needed for mobile */
+    }
+
+    #buttonContainer {
+        justify-content: space-around; /* Adjust button spacing on smaller screens */
+        /* Other responsive adjustments */
+    }
+
+    /* Additional mobile-specific styles can go here */
+}

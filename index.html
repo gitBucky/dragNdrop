@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sticker Fun</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+
+<body>
+    <video id="backgroundVideo" autoplay loop muted>
+        <source src="mogcat.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div id="stickerPopup" class="modal">
+        <div class="modal-content">
+            <div class="modal-titlebar">
+                <span class="modal-title">Moggles</span>
+                <span class="close">&times;</span>
+            </div>
+            <div id="stickerContainer">
+                <img src="hats/alienbeanie.png" class="sticker" draggable="true" />
+                <img src="hats/alienshroud.png" class="sticker" draggable="true" />
+                <img src="hats/beanie.png" class="sticker" draggable="true" />
+                <img src="hats/remiliobeanie.png" class="sticker" draggable="true" />
+                <img src="hats/topper.png" class="sticker" draggable="true" />
+
+            </div>
+        </div>
+    </div>
+    <!-- Replace your current "Add Sticker" button with this -->
+    <input type="file" id="imageLoader" accept="image/*" style="display: none;" />
+    <div id="buttonContainer">
+        <div id="addStickerBtn">
+            <div class="stickerIcon">
+                <img src="alienbeanie.png" alt="Sticker Icon" /> <!-- Replace with your sticker path -->
+            </div>
+            <span>Alien-ize</span>
+        </div>
+                <button id="deleteBtn" style="display:none;">X</button>
+                <button id="saveBtn">Save Image</button>
+                <button id="resetBtn">Reset Image</button>
+    </div>
+    <div id="canvasContainer">
+
+        <canvas id="imageCanvas"></canvas>
+        <label for="imageLoader" id="uploadIcon">
+            <img src="upload_icon.png" alt="Upload" /> <!-- Replace with your upload icon -->
+        </label>
+        <input type="file" id="imageLoader" accept="image/*" style="display: none;" />
+    </div>    
+
+<!-- Trigger Button -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="app2.js"></script> <!-- Link to your JavaScript file -->
+
+    <!-- Pop-up Modal -->
+
+
+</body>
+</html>
+
